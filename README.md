@@ -1,5 +1,6 @@
 # Techcareer Frontend Full Stack - Dockerize
 [Github Address]()
+[Mongo Address]()
 ---
 
 ## Git
@@ -18,8 +19,9 @@ git pull origin master
 ```
 ---
 
-## Konu
+## Visual Studio Code (VS Code)
 ```sh
+Auto Close Tag  => Jun Han
 
 ```
 ---
