@@ -98,18 +98,23 @@ $(document).ready(function () {
           success: function (data) {
               const $tbody = $("#blog-table tbody").empty();
               data.forEach(item => {
+                  const formattedDate = new Date(item.dateInformation).toLocaleDateString();
                   $tbody.append(`
                       <tr data-id="${item._id}">
                           <td>${item._id}</td>
                           <td>${item.username}</td>
                           <td>${item.email}</td>
                           <td>${item.password}</td>
-                          <td>${item.views}</td>
-                          <td>${item.status}</td>
-                          <td>${item.dateInformation}</td>
+                          <td>${item.views || 0}</td>
+                          <td>${item.status || 'active'}</td>
+                          <td>${formattedDate}</td>
                           <td>
-                              <button class="btn btn-primary edit-btn"><i class="fa-solid fa-wrench"></i></button>
-                              <button class="btn btn-danger delete-btn"><i class="fa-solid fa-trash"></i></button>
+                              <button class="btn btn-sm btn-primary edit-btn">
+                                  <i class="fa-solid fa-wrench"></i>
+                              </button>
+                              <button class="btn btn-sm btn-danger delete-btn">
+                                  <i class="fa-solid fa-trash"></i>
+                              </button>
                           </td>
                       </tr>
                   `);

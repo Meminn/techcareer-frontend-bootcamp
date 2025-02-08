@@ -108,26 +108,27 @@ EJS(Embedded JavaScript  bunu node.js kullandığımızda mongodb, api gibi veri
 
     <hr />
     <h2 class="text-primary">Blog</h2>
-    <!-- table.table.table-hover.table-striped>thead>tr>(th{id})*5 -->
-    <table id="blog-table" class="table table-hover table-striped">
-      <!-- THEAD -->
-      <thead>
-        <tr>
-          <th class="text-uppercase">id</th>
-          <th class="text-uppercase">username</th>
-          <th class="text-uppercase">email</th>
-          <th class="text-uppercase">password</th>
-          <th class="text-uppercase">views</th>
-          <th class="text-uppercase">status</th>
-          <th class="text-uppercase">created date</th>
-          <th class="text-uppercase">Actions</th>
-        </tr>
-      </thead>
-
-      <!-- TBODY -->
-      <tbody></tbody>
-    </table>
-    <!-- end table -->
+    <!-- Sadece table-responsive class'ı yeterli -->
+    <div class="table-responsive">
+        <table id="blog-table" class="table table-hover table-striped">
+            <!-- THEAD -->
+            <thead>
+                <tr>
+                    <th class="text-uppercase">id</th>
+                    <th class="text-uppercase">username</th>
+                    <th class="text-uppercase">email</th>
+                    <th class="text-uppercase">password</th>
+                    <th class="text-uppercase">views</th>
+                    <th class="text-uppercase">status</th>
+                    <th class="text-uppercase">created date</th>
+                    <th class="text-uppercase">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Tbody içeriği otomatik olarak kaydırılabilir olacak -->
+            </tbody>
+        </table>
+    </div>
 
     <!-- end codes -->
     <!-- Bootstrap JavaScript Libraries -->
