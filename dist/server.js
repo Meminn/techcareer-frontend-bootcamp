@@ -336,6 +336,8 @@ app.post("/register", csrfProtection, (request, response) => __awaiter(void 0, v
             success: "Kayıt başarıyla oluşturuldu",
             csrfToken: request.csrfToken()
         });
+        // POST işleminden sonra /register sayfasına yönlendir
+        response.redirect('/register');
     }
     catch (err) {
         console.error("Kayıt hatası:", err);
