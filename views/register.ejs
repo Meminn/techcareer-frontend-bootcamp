@@ -5,7 +5,7 @@ EJS(Embedded JavaScript  bunu node.js kullandığımızda mongodb, api gibi veri
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Register.ejs </title>
+    <title>Register Page</title>
     <!-- for language  -->
     <meta charset="utf-8" />
 
@@ -87,15 +87,17 @@ EJS(Embedded JavaScript  bunu node.js kullandığımızda mongodb, api gibi veri
       <!-- BLOG REGISTER PASSWORD -->
       <div class="form-group mb-3">
         <span for="password">Password</span>
-        <!-- required kaldırdım -->
         <input
-          id="password"
-          name="password"
-          class="form-control"
-          placeholder="Password"
-          type="password"
-          required
-          />
+            id="password"
+            name="password"
+            class="form-control"
+            placeholder="Password"
+            type="password"
+            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+            title="En az 8 karakter, en az 1 harf ve 1 rakam içermelidir"
+            required
+        />
+        <div class="password-strength mt-2"></div>
       </div>
 
 
@@ -107,7 +109,7 @@ EJS(Embedded JavaScript  bunu node.js kullandığımızda mongodb, api gibi veri
     </form>
 
     <hr />
-    <h2 class="text-primary">Blog</h2>
+    <h2 class="text-primary">Users</h2>
     <!-- Sadece table-responsive class'ı yeterli -->
     <div class="table-responsive">
         <table id="blog-table" class="table table-hover table-striped">
