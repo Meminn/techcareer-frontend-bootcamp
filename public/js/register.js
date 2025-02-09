@@ -172,8 +172,8 @@ $(document).ready(function () {
       }
   });
 
-  // Blog register güncelleme işlemi
-  $("#blog-register-table tbody").on("click", ".edit-btn", function () {
+  // Register güncelleme işlemi
+  $("#blog-table tbody").on("click", ".edit-btn", function () {
       const row = $(this).closest("tr");
       const id = row.data("id");
 
@@ -186,8 +186,8 @@ $(document).ready(function () {
       $("#submit-btn").text("Güncelle");
   });
 
-  // Blog register silme işlemi
-  $("#blog-register-table tbody").on("click", ".delete-btn", function () {
+  // Register silme işlemi
+  $("#blog-table tbody").on("click", ".delete-btn", function () {
       const id = $(this).closest("tr").data("id");
       
       if (!confirm(`${id} ID'li kullanıcıyı silmek istediğinizden emin misiniz?`)) return;
@@ -195,9 +195,21 @@ $(document).ready(function () {
       $.ajax({
           url: `/register/api/${id}`,
           method: "DELETE",
-          success: fetchBlogRegisterList,
-          error: handleError
+          success: function() {
+              console.log("Kayıt silindi");
+              fetchBlogRegisterList();
+          },
+          error: function(xhr, status, error) {
+              console.error("Silme hatası:", error);
+              alert("Silme işlemi sırasında bir hata oluştu");
+          }
       });
+  });
+
+  // Debug için click event'lerini kontrol et
+  $("#blog-table").on("click", ".edit-btn, .delete-btn", function(e) {
+      console.log("Button clicked:", $(this).hasClass("edit-btn") ? "Edit" : "Delete");
+      console.log("Row ID:", $(this).closest("tr").data("id"));
   });
 
   // Sayfa yüklendiğinde register listesini getir
