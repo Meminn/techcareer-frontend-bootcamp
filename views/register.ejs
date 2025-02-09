@@ -49,7 +49,7 @@ EJS(Embedded JavaScript  bunu node.js kullandığımızda mongodb, api gibi veri
     <!-- CSRF (Cross-Site Request Forgery):  action,POST için eklendi -->
     <!-- blog için express router(yönlendirmesini yapacağım bunun için server.ts gelen verilerden kullanacağım) -->
 
-    <form action="/register" method="POST" id="blog-form">
+    <form action="/register" method="POST" id="blog-register-form">
 
       <!-- Dikkat: Eğer bunu yazmazsanız hata alırsınız. CSRF (Cross-Site Request Forgery) -->
       <input type="hidden" name="_csrf" id="_csrf" value="<%= csrfToken %>" />
@@ -112,7 +112,7 @@ EJS(Embedded JavaScript  bunu node.js kullandığımızda mongodb, api gibi veri
     <h2 class="text-primary">Users</h2>
     <!-- Sadece table-responsive class'ı yeterli -->
     <div class="table-responsive">
-        <table id="blog-table" class="table table-hover table-striped">
+        <table id="blog-register-table" class="table table-hover table-striped">
             <!-- THEAD -->
             <thead>
                 <tr>

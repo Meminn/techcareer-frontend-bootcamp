@@ -20,23 +20,6 @@ $(document).ready(function () {
       $(element).after(`<small class="text-success valid-message">${message}</small>`);
   };
 
-  // İçerik harf sınırını kontrol etme fonksiyonu
-  const updateCharCount = () => {
-      const content = $("#content").val();
-      const charCount = content.length;
-      const remainingChars = maxChars - charCount;
-
-      $("#char-count").text(`Kalan Harf Sayısı: ${remainingChars}`);
-
-      if (remainingChars < 0) {
-          $("#char-count").removeClass("text-success").addClass("text-danger");
-          showError("#content", "İçerik 2000 harften fazla olamaz!");
-      } else {
-          $("#char-count").removeClass("text-danger").addClass("text-success");
-          $(".error-message").remove();
-      }
-  };
-
   // Form doğrulama fonksiyonu
   const validateForm = () => {
       clearErrors();
@@ -66,10 +49,6 @@ $(document).ready(function () {
       return isValid;
   };
 
-  // Kullanıcı içerik alanına yazdıkça harf sayısını güncelle
-  $("#content").on("input", function () {
-      updateCharCount();
-  });
 
   // Kullanıcı input'a yazarken hataları kaldır ve geçerli mesaj ekle
   $("#username, #email, #password").on("input", function () {
@@ -96,7 +75,7 @@ $(document).ready(function () {
           url: "/register/api",
           method: "GET",
           success: function (data) {
-              const $tbody = $("#blog-table tbody").empty();
+              const $tbody = $("#blog-register-table tbody").empty();
               data.forEach(item => {
                   const formattedDate = new Date(item.dateInformation).toLocaleDateString();
                   $tbody.append(`
@@ -173,7 +152,7 @@ $(document).ready(function () {
   });
 
   // Register güncelleme işlemi
-  $("#blog-table tbody").on("click", ".edit-btn", function () {
+  $("#blog-register-table tbody").on("click", ".edit-btn", function () {
       const row = $(this).closest("tr");
       const id = row.data("id");
 
@@ -187,7 +166,7 @@ $(document).ready(function () {
   });
 
   // Register silme işlemi
-  $("#blog-table tbody").on("click", ".delete-btn", function () {
+  $("#blog-register-table tbody").on("click", ".delete-btn", function () {
       const id = $(this).closest("tr").data("id");
       
       if (!confirm(`${id} ID'li kullanıcıyı silmek istediğinizden emin misiniz?`)) return;
@@ -207,12 +186,11 @@ $(document).ready(function () {
   });
 
   // Debug için click event'lerini kontrol et
-  $("#blog-table").on("click", ".edit-btn, .delete-btn", function(e) {
+  $("#blog-register-table").on("click", ".edit-btn, .delete-btn", function(e) {
       console.log("Button clicked:", $(this).hasClass("edit-btn") ? "Edit" : "Delete");
       console.log("Row ID:", $(this).closest("tr").data("id"));
   });
 
   // Sayfa yüklendiğinde register listesini getir
   fetchBlogRegisterList();
-  updateCharCount(); // Başlangıçta harf sayacını güncelle
 });
